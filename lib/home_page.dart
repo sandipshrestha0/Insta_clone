@@ -29,6 +29,14 @@ class _HomePageState extends State<HomePage> {
     "images/5.jpg",
     "images/6.jpg",
   ];
+  List<String> postImage = [
+     "images/1.png",
+    "images/2.png",
+    "images/3.jpg",
+    "images/4.jpg",
+    "images/5.jpg",
+    "images/6.jpg",
+  ];
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -67,13 +75,59 @@ class _HomePageState extends State<HomePage> {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: List.generate(
-                      6,
-                      (index) => Container(
-                            padding: EdgeInsets.all(8.0),
+                    6,
+                    (index) => Container(
+                      padding: EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+                          CircleAvatar(
+                            radius: 35.0,
+                            backgroundImage: AssetImage("images/story.jpg"),
                             child: CircleAvatar(
+                              radius: 32.0,
                               backgroundImage: AssetImage(profileImages[index]),
                             ),
-                          )),
+                          ),
+                          SizedBox(
+                            height: 10.0,
+                          ),
+                          Text(
+                            "Profile Name",
+                            style: TextStyle(fontSize: 12, ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Divider(),
+              Column(
+                children: List.generate(
+                  6,
+                  (index) => Column(
+                    children: [
+                      Row(
+                        children: [
+                          Container(
+                            padding: EdgeInsets.all(8.0),
+                            child: CircleAvatar(
+                              radius: 14.0,
+                              backgroundImage: AssetImage("images/story.jpg"),
+                              child: CircleAvatar(
+                                radius: 12,
+                                backgroundImage: AssetImage(profileImages[index]),
+                              ),
+                            ),
+                          ),
+                          Text("Profile Name"),
+                          Spacer(),
+                          IconButton(onPressed: (){}, icon: Icon(Icons.more_vert)),
+                        ],
+                      ),
+                      Image.asset(postImage[index], width: 1080, height: 608),
+                    ],
+                  ),
                 ),
               ),
             ],
